@@ -1,0 +1,143 @@
+<div class="container vh-100">
+    <h1 class="my-3">Hallo Selamat datang di PT.budiman.corp</h1>
+    <div class="row">
+        <div class="col col-lg-4">
+            <img src="assets/img/145.jpg" alt="ptbudimancorp" class="img-fluid">
+        </div>
+        <div class="col col-lg-8">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis recusandae, magni quam reiciendis
+                itaque totam
+                esse veniam labore nostrum debitis, quidem harum assumenda obcaecati cupiditate repudiandae asperiores
+                accusantium nihil laudantium ratione animi. Eos adipisci iure totam voluptatibus eum ullam officiis,
+                blanditiis
+                necessitatibus aperiam ratione optio. Nobis incidunt aliquam eos rem. Alias quisquam voluptas officiis
+                consequatur illo harum blanditiis eius sunt commodi molestiae minima fuga, tempore neque, dolore
+                molestias dolor
+                voluptate enim cupiditate corporis, dolorum doloremque dignissimos. Beatae cum illo odio saepe. Vel,
+                reiciendis
+                perspiciatis. Dignissimos amet tempore natus iusto inventore autem. Dicta iste sunt quod omnis qui!
+                Adipisci,
+                voluptatem facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quod assumenda qui
+                reiciendis earum quis cum quam officiis recusandae dolorem.</p>
+        </div>
+    </div>
+    <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt delectus perferendis sed omnis,
+        nemo sit quam?
+        Tenetur est commodi molestiae laudantium maiores repudiandae, consectetur itaque blanditiis ipsa modi at
+        pariatur omnis iusto obcaecati culpa voluptates dignissimos, fugiat distinctio ullam quam magni quisquam
+        voluptatem provident? Illo tenetur illum magni dolores, saepe sint at facere nam deleniti reiciendis, cum
+        doloremque quaerat, voluptas repellendus odit distinctio nostrum explicabo rem aliquam quod! Temporibus
+        aspernatur ipsa eveniet nobis neque praesentium corporis modi minus minima sint molestias impedit tenetur
+        repellat fugiat qui sunt eius odio, unde, quo placeat mollitia quae reiciendis! Voluptate, veniam dicta
+        blanditiis atque officiis sequi accusantium. Necessitatibus id voluptas nesciunt non aspernatur? Esse nulla
+        repellat cumque omnis quo tempora vero eveniet fugit modi accusantium enim fuga amet iure, et delectus, dolores
+        sit doloribus commodi recusandae consequuntur iusto! Ex modi eos vel tempore aliquam impedit voluptas deleniti
+        nisi! Temporibus possimus libero qui, placeat error, iusto quasi itaque fugit doloremque reiciendis, voluptates
+        eligendi. Nobis alias dicta expedita modi itaque ad quia. Iure laborum dicta saepe cupiditate commodi, impedit
+        obcaecati placeat ullam, ex distinctio tempora possimus error, illum autem maxime sequi in? Inventore, sapiente
+        ea! Quos rerum quas aliquid eveniet reiciendis perspiciatis, quae reprehenderit asperiores praesentium?</p>
+
+
+    <h2 class="text-center my-3">List Transaksi Petugas</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="bg-info">
+                <th scope="col">#</th>
+                <th scope="col">Nama Petugas</th>
+                <th scope="col">100.000</th>
+                <th scope="col">75.000</th>
+                <th scope="col">50.000</th>
+                <th scope="col">20.000</th>
+                <th scope="col">10.000</th>
+                <th scope="col">5.000</th>
+                <th scope="col">2.000</th>
+                <th scope="col">1.000</th>
+                <th scope="col">1.000</th>
+                <th scope="col">500</th>
+                <th scope="col">200</th>
+                <th scope="col">100</th>
+                <th scope="col">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let i = 1 %>
+            <% transaksion.forEach(transaksi => { %>
+            <tr>
+                <th scope="row"><%= i++ %> </th>
+                <td><%= transaksi.petugas_transaksi %> </td>
+                <td><%= transaksi.seratus_ribu %> </td>
+                <td><%= transaksi.tujuh_lima %> </td>
+                <td><%= transaksi.lima_puluh %> </td>
+                <td><%= transaksi.dua_puluh %> </td>
+                <td><%= transaksi.sepuluh_ribu %> </td>
+                <td><%= transaksi.lima_ribu %> </td>
+                <td><%= transaksi.dua_ribu %> </td>
+                <td><%= transaksi.seribu %></td>
+                <td><%= transaksi.seribu_coin %> </td>
+                <td><%= transaksi.lima_ratus_coin %> </td>
+                <td><%= transaksi.dua_ratus_coin %> </td>
+                <td><%= transaksi.seratus_coin %> </td>
+                <td>
+                    <a href="/delete_transaksi/<%= transaksi.id_transaksi %> " class="btn btn-sm btn-danger">Delete</a>
+                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+            <% }) %>
+
+            <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <h2 class="text-center my-5">About Me</h2>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et hic, dolore explicabo dignissimos iste vero nulla
+        nam neque aspernatur quo eius cumque ratione aut, quasi natus amet obcaecati illo harum!
+
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis temporibus, nisi ratione porro voluptas quo
+        sequi ab illo non expedita adipisci, voluptatum recusandae illum repellat, dolore est deserunt enim laudantium
+        iste ad quasi. Cupiditate provident iure consequuntur laboriosam vel voluptas deleniti aliquam, laborum
+        exercitationem maiores natus deserunt vitae tempora illum ut voluptatum eum placeat aliquid consectetur
+        temporibus inventore quo expedita assumenda! Id fugit repellat ratione quibusdam sequi vitae nostrum illum ipsam
+        exercitationem possimus, reiciendis voluptatibus soluta minus nesciunt optio blanditiis fugiat rem, veritatis
+        totam dolor accusantium, dicta modi. Suscipit aliquid maiores harum, aspernatur, veritatis ut corrupti incidunt,
+        accusamus tempore repellendus tempora eos earum illum. Porro qui dicta rerum ipsa corporis minima fugit odio, ab
+        odit minus excepturi tempora delectus eos ipsam sequi aliquam earum facere veniam voluptates sed. Hic
+        necessitatibus sed velit, dolorum animi quas officia, cum adipisci ratione a sint dignissimos! Corporis
+        recusandae, quisquam odit ducimus id, ipsa ab ea voluptas quod at nostrum deserunt expedita modi atque dolore
+        quaerat voluptates earum dolores, quia adipisci. Unde velit eos laudantium? Earum, voluptatum pariatur dolores
+        nam sint est quos minus dignissimos. Iure earum possimus quia asperiores illum dignissimos nostrum deleniti!
+        Illum fugiat quam nesciunt consequuntur nobis possimus in rem excepturi atque. Sunt odit nihil est dicta quos
+        quisquam, asperiores dolores molestiae dolore incidunt officia doloremque iure? Fugiat soluta, mollitia
+        similique nulla perferendis praesentium optio porro inventore accusantium excepturi reiciendis suscipit
+        adipisci, cum eveniet facilis molestiae illo, sapiente dignissimos eius velit. Facilis deserunt laborum ipsam
+        earum possimus corrupti nihil omnis reprehenderit distinctio adipisci provident eveniet ipsa in iste placeat,
+        quo sapiente eaque odit, repudiandae eligendi. Fugiat repellendus ipsa quis nulla doloribus, praesentium dolore
+        itaque optio. Officia laborum dolor veritatis accusamus rem recusandae nihil repellendus non, et vel quod,
+        perferendis corrupti quisquam reiciendis, sed illo natus? Perferendis itaque ipsa provident atque! Quis nulla
+        beatae sit ut iusto dolor corrupti repellat illo in dolore dolorem asperiores, architecto excepturi, eveniet et
+        perspiciatis consequuntur rem placeat doloribus! Modi sed ipsum atque nostrum omnis, nobis, saepe ipsa nulla
+        maiores corporis laboriosam dolorem fuga voluptas non neque, id doloremque ullam minus aspernatur autem eligendi
+        quo reiciendis ab exercitationem. Fugiat distinctio, soluta quam nobis ipsa quia cum fugit aut saepe, recusandae
+        illum repellendus debitis velit ipsam perferendis. Distinctio inventore, vero dolorem sapiente unde facilis modi
+        natus animi ipsam repellat, harum quod ea voluptatem omnis. Minima dolore laborum odit voluptatem illo iure,
+        voluptatum sed. Doloremque veritatis totam odit iusto asperiores?
+    </div>
+</div>

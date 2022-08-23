@@ -1,0 +1,121 @@
+<div class="container">
+    <h2 class="mt-2 text-center">Data Jabatan</h2>
+    <!-- Modal Save-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Jabatan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/save" method="post">
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" class="form-control" id="nama_jabatan" name="nama_jabatan"
+                                        placeholder="Nama Jabatan">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- end modal save-->
+
+    <!-- Button trigger modal save-->
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Tambah
+            </button>
+        </div>
+    </div>
+    <!-- end button -->
+
+    <!-- Tabel -->
+    <table class="table table-bordered" id="myTable">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let i=1 %>
+            <% results.forEach(data => { %>
+            <tr>
+                <th scope="row"><%= i++ %> </th>
+                <td><%= data.nama_jabatan %> </td>
+                <td>
+                    <a href="/dataJabatan/<%= data.id %>" class="btn btn-danger delete">Delete</a>
+                    <a href="#" class="btn btn-warning edit" data-bs-toggle="modal" data-bs-target="#EditModal"
+                        data-id="<%= data.id %> " data-nama_jabatan="<%= data.nama_jabatan %> ">Edit</a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <!-- end tabel -->
+
+    <!-- Modal Update-->
+    <form action="/update_data_jabatan" method="POST">
+        <div class="modal fade" id="EditModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Update Data Jabatan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <input type="text" class="form-control id_jabatan" id="id_jabatan" name="id_jabatan"
+                                        placeholder="id" readonly hidden>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" class="form-control nama_jabatan" id="nama_jabatan"
+                                        name="nama_jabatan" placeholder="Nama Jabatan">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        let btnEdit = document.querySelectorAll('.edit');
+        btnEdit.forEach(edit => {
+            edit.addEventListener('click', () => {
+                let id = edit.getAttribute('data-id');
+                let nJabatan = edit.getAttribute('data-nama_jabatan');
+                let idModal = document.querySelector('#EditModal .modal-body #id_jabatan');
+                let nModal = document.querySelector('#EditModal .modal-body #nama_jabatan');
+                idModal.value = id;
+                nModal.value = nJabatan;
+                console.log(nJabatan)
+            });
+        });
+    </script>
+    <!-- end modal update-->
+
+
+</div>

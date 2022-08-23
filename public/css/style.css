@@ -1,0 +1,16 @@
+.masuk {
+    width: 80px;
+}
+
+[readonly] {
+    width: 100px;
+    font-weight: bold;
+}
+
+.form-select[name="petugas_transaksi"] {
+    width: 378px;
+}
+
+th[scope="col"] {
+    font-size: small;
+}

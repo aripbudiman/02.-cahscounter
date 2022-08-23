@@ -1,0 +1,132 @@
+<div class="container">
+    <h2 class="text-center my-3">Transaksi</h2>
+    <form action="/save_transaksi" method="post">
+        <div class="row justify-content-center">
+            <div class="col col-lg-6">
+                <select class="form-select my-3" name="petugas_transaksi" id="petugas_transaksi">
+                    <option selected> &laquo; Pilih Petugas</option>
+                    <% karyawans.forEach(karyawan => { %>
+                    <option value="<%= karyawan.nama_karyawan %> "><%= karyawan.nama_karyawan %> </option>
+                    <% }) %>
+                </select>
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col col-lg-6">
+                <input type="text" class="form-input-group" value="100000" readonly>
+                <input type="text" class="form-input-group masuk" name="seratus_ribu">
+                <input type="text" class="form-input-group hasil">
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col col-lg-6">
+                <input type="text" class="form-input-group" value="75000" readonly>
+                <input type="text" class="form-input-group masuk" name="tujuh_lima">
+                <input type="text" class="form-input-group hasil">
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col col-lg-6">
+                <input type="text" class="form-input-group" value="50000" readonly>
+                <input type="text" class="form-input-group masuk" name="lima_puluh">
+                <input type="text" class="form-input-group hasil">
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col col-lg-6">
+                <input type="text" class="form-input-group" value="20000" readonly>
+                <input type="text" class="form-input-group masuk" name="dua_puluh">
+                <input type="text" class="form-input-group hasil">
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col col-lg-6">
+                <input type="text" class="form-input-group" value="10000" readonly>
+                <input type="text" class="form-input-group masuk" name="sepuluh_ribu">
+                <input type="text" class="form-input-group hasil">
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col col-lg-6">
+                <input type="text" class="form-input-group" value="5000" readonly>
+                <input type="text" class="form-input-group masuk" name="lima_ribu">
+                <input type="text" class="form-input-group hasil">
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col col-lg-6">
+                <input type="text" class="form-input-group" value="2000" readonly>
+                <input type="text" class="form-input-group masuk" name="dua_ribu">
+                <input type="text" class="form-input-group hasil">
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col col-lg-6">
+                <input type="text" class="form-input-group" value="1000" readonly>
+                <input type="text" class="form-input-group masuk" name="seribu">
+                <input type="text" class="form-input-group hasil">
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col col-lg-6">
+                <input type="text" class="form-input-group" value="1000" readonly>
+                <input type="text" class="form-input-group masuk" name="seribu_coin">
+                <input type="text" class="form-input-group hasil">
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col col-lg-6">
+                <input type="text" class="form-input-group" value="500" readonly>
+                <input type="text" class="form-input-group masuk" name="lima_ratus_coin">
+                <input type="text" class="form-input-group hasil">
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col col-lg-6">
+                <input type="text" class="form-input-group" value="200" readonly>
+                <input type="text" class="form-input-group masuk" name="dua_ratus_coin">
+                <input type="text" class="form-input-group hasil">
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col col-lg-6">
+                <input type="text" class="form-input-group" value="100" readonly>
+                <input type="text" class="form-input-group masuk" name="seratus_coin">
+                <input type="text" class="form-input-group hasil">
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col col-lg-6">
+                <button class="btn btn-primary" type="submit">Tambahkan</button>
+                <button class="btn btn-warning" type="button">Hitung</button>
+                <input type="text" class="form-input-group grand-total">
+            </div>
+        </div>
+    </form>
+
+    <script>
+        let masuk = document.querySelectorAll('.masuk');
+        let hasil = document.querySelectorAll('.hasil');
+        let arrayRupiah = [100000, 75000, 50000, 20000, 10000, 5000, 2000, 1000, 1000, 500, 200, 100];
+        let grandTotal = document.querySelector('.grand-total');
+
+        for (let i = 0; i < arrayRupiah.length; i++) {
+            masuk[i].addEventListener('keyup', function () {
+                hasil[i].value = masuk[i].value * arrayRupiah[i]
+            });
+        }
+
+        for (let i = 0; i < hasil.length; i++) {
+            hasil[i].addEventListener('keyup', function () {
+                let result = 0;
+                for (let j = 0; j < hasil.length; j++) {
+                    if (hasil[j].value == "") result += 0;
+                    else {
+                        result += parseFloat(hasil[j].value);
+                    }
+                }
+                grandTotal.value = result;
+            });
+        }
+    </script>
+</div>

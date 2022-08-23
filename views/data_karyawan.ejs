@@ -1,0 +1,144 @@
+<div class="container">
+    <h2 class="text-center my-3">Data Karyawan PT.BUDIMAN Corp</h2>
+    <!-- Modal -->
+    <form action="/save_karyawan" method="post">
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Karyawan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col col-lg-12">
+                                    <input type="text" class="form-control" id="nama_karyawan" name="nama_karyawan"
+                                        placeholder="Nama Karyawan">
+                                </div>
+                                <div class="row">
+                                    <div class="col col-lg-12">
+                                        <select class="form-select my-3" name="jabatan_karyawan" id="jabatan_karyawan">
+                                            <option selected>Open This Select Menu</option>
+                                            <% jabatans.forEach(jabatan => { %>
+                                            <option value="<%= jabatan.nama_jabatan %> "><%= jabatan.nama_jabatan %>
+                                            </option>
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- end modal -->
+
+    <div class="row my-2">
+        <div class="col">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Tambah Data
+            </button>
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Jabatan</th>
+                <th scope="col">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let i = 1 %>
+            <% karyawans.forEach(karyawan => { %>
+            <tr>
+                <th scope="row"><%= i++ %> </th>
+                <td><%= karyawan.nama_karyawan %> </td>
+                <td><%= karyawan.jabatan_karyawan %> </td>
+                <td>
+                    <a href="/delete_karyawan/<%= karyawan.id_karyawan %> " class="btn btn-danger">Delete</a>
+                    <a href="#" class="btn btn-warning edit" data-bs-target="#modalEditKaryawan" data-bs-toggle="modal"
+                        data-id="<%= karyawan.id_karyawan %> " data-nama_karyawan="<%= karyawan.nama_karyawan %> "
+                        data-jabatan_karyawan="<%= karyawan.jabatan_karyawan %> ">Edit</a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <!-- Modal update data karyawan-->
+    <form action="/update_karyawan" method="POST">
+        <div class="modal fade" id="modalEditKaryawan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Update Data Karyawan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col col-lg-12">
+                                    <input type="text" class="form-control" id="id_karyawan" name="id_karyawan"
+                                        placeholder="Id Karyawan" hidden readonly>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-lg-12">
+                                        <input type="text" class="form-control" id="nama_karyawan" name="nama_karyawan"
+                                            placeholder="Nama Karyawan">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-lg-12">
+                                            <select class="form-select my-3" name="jabatan_karyawan"
+                                                id="jabatan_karyawan">
+                                                <option selected>Open This Select Menu</option>
+                                                <% jabatans.forEach(jabatan => { %>
+                                                <option value="<%= jabatan.nama_jabatan %> "><%= jabatan.nama_jabatan %>
+                                                </option>
+                                                <% }) %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+    <!-- end modal upadte data karyawan-->
+
+
+    <script>
+        const btnEdit = document.querySelectorAll('.edit');
+        btnEdit.forEach(edit => {
+            edit.addEventListener('click', () => {
+                let idKaryawan = edit.getAttribute('data-id');
+                let namaKaryawan = edit.getAttribute('data-nama_karyawan');
+                let jabatanKaryawan = edit.getAttribute('data-jabatan_karyawan');
+
+                let id = document.querySelector('#modalEditKaryawan .modal-body #id_karyawan');
+                let nama = document.querySelector('#modalEditKaryawan .modal-body #nama_karyawan');
+                let jabatan = document.querySelector(
+                    '#modalEditKaryawan .modal-body #jabatan_karyawan option');
+                id.value = idKaryawan;
+                nama.value = namaKaryawan;
+                jabatan.value = jabatanKaryawan;
+                console.log(jabatan.value)
+            });
+        });
+    </script>
+</div>
